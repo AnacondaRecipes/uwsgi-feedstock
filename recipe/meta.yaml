@@ -9,8 +9,12 @@ source:
   sha256: 4972ac538800fb2d421027f49b4a1869b66048839507ccf0aa2fda792d99f583
 
 build:
-  number: 4
-  skip: True  # [win]
+  number: 0
+  # TODO: the build requires libpython (our libpython-static package for python 3.9)
+  # either this package needs to have that as a host requirement, like Conda-Forge, or we
+  # will need to look into updates to support the build. Either with python packages changes
+  # or modifications here.
+  skip: True  # [win or py==39]
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -20,13 +24,14 @@ requirements:
   host:
     - python
     - pip
+    - xz        # [linux]
     - jansson
-    - libxml2  # [not win]
+    - libxml2   # [not win]
     - openssl
     - pcre
     - yaml
     - zlib
-    - icu
+    - icu       # [linux]
   run:
     - python
     - jansson
