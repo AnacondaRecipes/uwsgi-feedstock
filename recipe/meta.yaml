@@ -1,20 +1,17 @@
-{% set version = "2.0.18" %}
+{% set name = "uWSGI" %}
+{% set version = "2.0.19.1" %}
 
 package:
-  name: uwsgi
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/u/uWSGI/uwsgi-{{ version }}.tar.gz
-  sha256: 4972ac538800fb2d421027f49b4a1869b66048839507ccf0aa2fda792d99f583
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: faa85e053c0b1be4d5585b0858d3a511d2cd10201802e8676060fd0a109e5869
 
 build:
-  number: 0
-  # TODO: the build requires libpython (our libpython-static package for python 3.9)
-  # either this package needs to have that as a host requirement, like Conda-Forge, or we
-  # will need to look into updates to support the build. Either with python packages changes
-  # or modifications here.
-  skip: True  # [win or py==39]
+  number: 3
+  skip: True  # [win]
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -22,30 +19,30 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - python
-    - pip
-    - xz        # [linux]
+    - icu
     - jansson
-    - libxml2   # [not win]
+    - libpython-static  # [py>=38]
+    - libxml2  # [not win]
     - openssl
     - pcre
+    - pip
+    - python
     - yaml
     - zlib
-    - icu       # [linux]
   run:
-    - python
     - jansson
+    - python
 
 test:
   source_files:
     - tests
   commands:
-    - uwsgi --version
     - uwsgi --plugin-list
+    - uwsgi --version
 
 about:
   home: https://github.com/unbit/uwsgi
-  license: GPL-2.0
+  license: GPL-2.0-or-later
   license_file: LICENSE
   summary: |
     The uWSGI project aims at developing a full stack for building hosting
