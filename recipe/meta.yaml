@@ -34,8 +34,9 @@ requirements:
   run:
     - jansson
     - python
-    - libuuid
-    - xz
+# libuuid and xz fixes the overlinking or missing dependency error on linux
+    - libuuid # [linux]
+    - xz  # [linux]
   
 
 test:
