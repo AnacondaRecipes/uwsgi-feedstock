@@ -23,7 +23,7 @@ requirements:
     - jansson
     - libpython-static  # [py>=38]
     - libxml2  # [not win]
-    - openssl ={{ openssl }}
+    - openssl {{ openssl }}
     - pcre
     - pip
     - python
