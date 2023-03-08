@@ -23,10 +23,12 @@ requirements:
     - jansson
     - libpython-static  # [py>=38]
     - libxml2  # [not win]
-    - openssl {{ openssl }}
+    - openssl ={{ openssl }}
     - pcre
     - pip
     - python
+    - setuptools
+    - wheel
     - yaml
     - zlib
   run:
@@ -51,7 +53,8 @@ about:
   license: GPL-2.0-or-later
   license_family: GPL
   license_file: LICENSE
-  summary: |
+  summary: The uWSGI project aims at developing a full stack for building hosting services
+  description: |
     The uWSGI project aims at developing a full stack for building hosting
     services. Application servers (for various programming languages and
     protocols), proxies, process managers and monitors are all implemented.
