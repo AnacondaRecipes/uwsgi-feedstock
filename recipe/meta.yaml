@@ -1,16 +1,16 @@
 {% set name = "uWSGI" %}
-{% set version = "2.0.19.1" %}
+{% set version = "2.0.21" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: faa85e053c0b1be4d5585b0858d3a511d2cd10201802e8676060fd0a109e5869
+  url: https://github.com/unbit/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 35a30d83791329429bc04fe44183ce4ab512fcf6968070a7bfba42fc5a0552a9
 
 build:
-  number: 3
+  number: 0
   skip: True  # [win]
   detect_binary_files_with_prefix: true
 
@@ -19,35 +19,48 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - icu
-    - jansson
+    - icu {{ icu }}
+    - jansson 2.14
     - libpython-static  # [py>=38]
     - libxml2  # [not win]
-    - openssl
-    - pcre
+    - openssl {{ openssl }}
+    - pcre 8.44
     - pip
     - python
-    - yaml
-    - zlib
+    - setuptools
+    - wheel
+    - yaml 0.2.5
+    - zlib {{ zlib }}
   run:
     - jansson
     - python
+# libuuid and xz fixes the overlinking or missing dependency error on linux
+    - libuuid # [linux]
+    - xz  # [linux]
+  
 
 test:
   source_files:
     - tests
+  requires:
+    - pip
   commands:
+    - pip check
     - uwsgi --plugin-list
     - uwsgi --version
 
 about:
   home: https://github.com/unbit/uwsgi
   license: GPL-2.0-or-later
+  license_family: GPL
   license_file: LICENSE
-  summary: |
+  summary: The uWSGI project aims at developing a full stack for building hosting services
+  description: |
     The uWSGI project aims at developing a full stack for building hosting
     services. Application servers (for various programming languages and
     protocols), proxies, process managers and monitors are all implemented.
+  doc_url: https://uwsgi-docs.readthedocs.io/en/latest/
+  dev_url: https://github.com/unbit/uwsgi
 
 extra:
   recipe-maintainers:
