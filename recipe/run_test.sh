@@ -3,7 +3,7 @@
 set +x
 
 pip check
-uwsgi --plugin-list
+#uwsgi --plugin-list
 uwsgi --version
 
 if [[ -n "$TERM" && "$TERM" != dumb ]]; then

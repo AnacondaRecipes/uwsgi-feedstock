@@ -19,18 +19,18 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - icu {{ icu }}
+    - icu
     - jansson 2.14
     - libpython-static  # [py>=38]
     - libxml2 2.10  # [not win]
-    - openssl {{ openssl }}
+    - openssl
     - pcre 8.44
     - pip
     - python
     - setuptools
     - wheel
     - yaml 0.2.5
-    - zlib {{ zlib }}
+    - zlib
   run:
     - jansson
     - python
