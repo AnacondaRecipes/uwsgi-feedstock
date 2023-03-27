@@ -44,10 +44,8 @@ test:
     - tests
   requires:
     - pip
-  commands:
-    - pip check
-    - uwsgi --plugin-list
-    - uwsgi --version
+  # Test commands in run_test.sh and run_test.py
+
 
 about:
   home: https://github.com/unbit/uwsgi
