@@ -2,6 +2,10 @@
 
 set +x
 
+pip check
+#uwsgi --plugin-list
+uwsgi --version
+
 if [[ -n "$TERM" && "$TERM" != dumb ]]; then
     txtund=$(tput sgr 0 1)          # underline
     txtbld=$(tput bold)             # bold

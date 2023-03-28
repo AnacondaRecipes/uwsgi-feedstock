@@ -10,7 +10,7 @@ source:
   sha256: 35a30d83791329429bc04fe44183ce4ab512fcf6968070a7bfba42fc5a0552a9
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
   detect_binary_files_with_prefix: true
 
@@ -22,7 +22,7 @@ requirements:
     - icu {{ icu }}
     - jansson 2.14
     - libpython-static  # [py>=38]
-    - libxml2  # [not win]
+    - libxml2 2.10  # [not win]
     - openssl {{ openssl }}
     - pcre 8.44
     - pip
@@ -38,16 +38,12 @@ requirements:
     - libuuid # [linux]
     - xz  # [linux]
   
-
 test:
   source_files:
     - tests
   requires:
     - pip
-  commands:
-    - pip check
-    - uwsgi --plugin-list
-    - uwsgi --version
+  # Test commands in run_test.sh and run_test.py
 
 about:
   home: https://github.com/unbit/uwsgi
