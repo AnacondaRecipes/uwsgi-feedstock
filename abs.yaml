@@ -1,3 +1,8 @@
-# Remove this tag when the underlying issue https://github.com/anaconda-distribution/rocket-platform/pull/751
-# will be resolved.
-pkg_build_image_tag: '2023.03.24'
+channels:
+  icu73: icu73
+
+aggregate_branch: icu-73.1
+
+build_parameters:
+  - "--suppress-variables"
+  - "--error-overlinking"
