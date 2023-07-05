@@ -62,3 +62,5 @@ extra:
   recipe-maintainers:
     - kalefranz
     - ocefpaf
+  skip-lints:
+    - host_section_needs_exact_pinnings
