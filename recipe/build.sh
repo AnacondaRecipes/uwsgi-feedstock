@@ -8,4 +8,4 @@ if [[ $(uname) == Linux ]]; then
   export LDFLAGS="${LDFLAGS} -Wl,--no-as-needed"
 fi
 
-UWSGI_EMBED_PLUGINS=stats_pusher_statsd ${PYTHON} -m pip install . --no-deps -vv
+UWSGI_EMBED_PLUGINS=stats_pusher_statsd ${PYTHON} -m pip install . --no-deps --no-build-isolation -vv
