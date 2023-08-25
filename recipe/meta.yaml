@@ -19,7 +19,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - icu {{ icu }}
+    - icu 73
     - jansson 2.14
     - libpython-static  # [py>=38]
     - libxml2 2.10  # [not win]
