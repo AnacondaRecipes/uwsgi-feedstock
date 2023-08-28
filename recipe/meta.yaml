@@ -21,7 +21,7 @@ requirements:
   host:
     - icu 73
     - jansson 2.14
-    - libpython-static  # [py>=38]
+    - libpython-static {{ python }} # [py>=38]
     - libxml2 {{ libxml2 }}  # [not win]
     - openssl {{ openssl }}
     - pcre 8.44
