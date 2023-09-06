@@ -1,6 +1,7 @@
 {% set name = "uWSGI" %}
 {% set version = "2.0.21" %}
 
+
 package:
   name: {{ name|lower }}
   version: {{ version }}
