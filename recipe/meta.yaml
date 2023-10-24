@@ -10,7 +10,7 @@ source:
   sha256: 35a30d83791329429bc04fe44183ce4ab512fcf6968070a7bfba42fc5a0552a9
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win]
   detect_binary_files_with_prefix: true
 
@@ -19,10 +19,10 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - icu {{ icu }}
+    - icu 73
     - jansson 2.14
     - libpython-static {{ python }} # [py>=38]
-    - libxml2 2.10  # [not win]
+    - libxml2 {{ libxml2 }}  # [not win]
     - openssl {{ openssl }}
     - pcre 8.44
     - pip
