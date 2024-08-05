@@ -10,8 +10,9 @@ source:
   sha256: 35a30d83791329429bc04fe44183ce4ab512fcf6968070a7bfba42fc5a0552a9
 
 build:
-  number: 3
-  skip: True  # [win]
+  number: 4
+  # No python 3.12 version available
+  skip: True  # [win or py>311]
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -31,13 +32,14 @@ requirements:
     - wheel
     - yaml 0.2.5
     - zlib {{ zlib }}
+    - xz {{ xz }}  # [linux]
   run:
     - jansson
     - python
 # libuuid and xz fixes the overlinking or missing dependency error on linux
     - libuuid # [linux]
     - xz  # [linux]
-  
+
 test:
   source_files:
     - tests
@@ -55,7 +57,7 @@ about:
     The uWSGI project aims at developing a full stack for building hosting
     services. Application servers (for various programming languages and
     protocols), proxies, process managers and monitors are all implemented.
-  doc_url: https://uwsgi-docs.readthedocs.io/en/latest/
+  doc_url: https://uwsgi-docs.readthedocs.io
   dev_url: https://github.com/unbit/uwsgi
 
 extra:
