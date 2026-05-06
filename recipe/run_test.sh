@@ -76,9 +76,9 @@ test_python() {
     echo -e "${bldyel}>>> Spawning uWSGI python app${txtrst}"
     echo -en "${bldred}"
     pushd tests
-    $PREFIX/bin/uwsgi --master --http :8080 --exit-on-reload --touch-reload reload.txt --wsgi-file staticfile.py --daemonize uwsgi.log
+    $PREFIX/bin/uwsgi --master --http 127.0.0.1:38765 --exit-on-reload --touch-reload reload.txt --wsgi-file staticfile.py --daemonize uwsgi.log
     echo -en "${txtrst}"
-    http_test "http://localhost:8080/"
+    http_test "http://127.0.0.1:38765/"
     popd
     echo -e "${bldyel}===================== DONE $1 =====================${txtrst}\n\n"
 }

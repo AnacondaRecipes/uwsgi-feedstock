@@ -10,19 +10,21 @@ source:
   sha256: 35a30d83791329429bc04fe44183ce4ab512fcf6968070a7bfba42fc5a0552a9
 
 build:
-  number: 4
+  number: 5
   # No python 3.12 version available
   skip: True  # [win or py>311]
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - icu 73
+    - icu {{ icu }}
     - jansson 2.14
     - libpython-static {{ python }} # [py>=38]
+    - libxcrypt {{ libxcrypt }}  # [linux]
     - libxml2 {{ libxml2 }}  # [not win]
     - openssl {{ openssl }}
     - pcre 8.44
@@ -38,6 +40,7 @@ requirements:
     - python
 # libuuid and xz fixes the overlinking or missing dependency error on linux
     - libuuid # [linux]
+    - libxcrypt  # [linux]
     - xz  # [linux]
 
 test:
