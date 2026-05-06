@@ -6,3 +6,7 @@ macos_min_version:
   - 10.15  # [osx and x86_64]
 MACOSX_DEPLOYMENT_TARGET:
   - 10.15  # [osx and x86_64]
+
+# rebuild for icu 78.3
+icu:
+  - 78.3
