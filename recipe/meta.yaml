@@ -1,5 +1,5 @@
 {% set name = "uWSGI" %}
-{% set version = "2.0.21" %}
+{% set version = "2.0.31" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/unbit/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 35a30d83791329429bc04fe44183ce4ab512fcf6968070a7bfba42fc5a0552a9
+  sha256: d5fb7b058a6e037cad1f0fb8841de56d673d80a3af036bba830143b60c67c3dc
 
 build:
-  number: 5
-  # No python 3.12 version available
-  skip: True  # [win or py>311]
+  number: 0
+  # No python 3.14 version available
+  skip: True  # [win or py>313]
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -20,6 +20,7 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - pkg-config
   host:
     - icu {{ icu }}
     - jansson 2.14
@@ -27,7 +28,7 @@ requirements:
     - libxcrypt {{ libxcrypt }}  # [linux]
     - libxml2 {{ libxml2 }}  # [not win]
     - openssl {{ openssl }}
-    - pcre 8.44
+    - pcre2 {{ pcre2 }}
     - pip
     - python
     - setuptools
