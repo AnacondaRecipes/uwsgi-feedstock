@@ -11,4 +11,4 @@ MACOSX_DEPLOYMENT_TARGET:
 icu:
   - 78.3
 libxml2:
-  - 2.14.4
+  - 2.15.3
