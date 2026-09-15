@@ -1,8 +1,8 @@
-{% set name = "uWSGI" %}
+{% set name = "uwsgi" %}
 {% set version = "2.0.31" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
@@ -10,9 +10,9 @@ source:
   sha256: d5fb7b058a6e037cad1f0fb8841de56d673d80a3af036bba830143b60c67c3dc
 
 build:
-  number: 0
+  number: 1
   # No python 3.14 version available
-  skip: True  # [win or py>313]
+  skip: true  # [win or py>313]
   detect_binary_files_with_prefix: true
 
 requirements:
