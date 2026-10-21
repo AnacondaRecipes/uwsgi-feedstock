@@ -10,7 +10,7 @@ source:
   sha256: d5fb7b058a6e037cad1f0fb8841de56d673d80a3af036bba830143b60c67c3dc
 
 build:
-  number: 1
+  number: 2
   # No python 3.14 version available
   skip: true  # [win or py>313]
   detect_binary_files_with_prefix: true
