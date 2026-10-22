@@ -23,7 +23,7 @@ requirements:
     - pkg-config
   host:
     - icu {{ icu }}
-    - jansson 2.14
+    - jansson {{ jansson }}
     - libpython-static {{ python }} # [py>=38]
     - libxcrypt {{ libxcrypt }}  # [linux]
     - libxml2 {{ libxml2 }}  # [not win]
