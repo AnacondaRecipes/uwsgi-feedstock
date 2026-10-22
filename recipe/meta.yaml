@@ -33,7 +33,7 @@ requirements:
     - python
     - setuptools
     - wheel
-    - yaml 0.2.5
+    - yaml {{ yaml }}
     - zlib {{ zlib }}
     - xz {{ xz }}  # [linux]
   run:
