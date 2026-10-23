@@ -10,7 +10,7 @@ source:
   sha256: d5fb7b058a6e037cad1f0fb8841de56d673d80a3af036bba830143b60c67c3dc
 
 build:
-  number: 1
+  number: 2
   # No python 3.14 version available
   skip: true  # [win or py>313]
   detect_binary_files_with_prefix: true
@@ -23,7 +23,7 @@ requirements:
     - pkg-config
   host:
     - icu {{ icu }}
-    - jansson 2.14
+    - jansson {{ jansson }}
     - libpython-static {{ python }} # [py>=38]
     - libxcrypt {{ libxcrypt }}  # [linux]
     - libxml2 {{ libxml2 }}  # [not win]
@@ -33,7 +33,7 @@ requirements:
     - python
     - setuptools
     - wheel
-    - yaml 0.2.5
+    - yaml {{ yaml }}
     - zlib {{ zlib }}
     - xz {{ xz }}  # [linux]
   run:
